@@ -1,0 +1,262 @@
+// Imports
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Open+Sans&display=swap");
+
+// Mixins
+@mixin font($font, $weight, $size) {
+    font-family: $font;
+    font-weight: $weight;
+    font-size: $size;
+}
+
+@mixin mn-pd($margin, $padding) {
+    // maxin for margin and padding values
+    margin: $margin;
+    padding: $padding;
+}
+
+@mixin underline {
+    content: "";
+    display: block;
+    position: absolute;
+    background-color: $nav-active;
+    width: 100%;
+    height: 1px;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.2s linear;
+}
+
+// Variables
+$ff-mont: "Montserrat", sans-serif;
+$ff-os: "Open Sans", sans-serif;
+$thin: 300;
+$regular: 400;
+$bold: 700;
+$transition: 0.2s;
+
+// Colors
+$black: #000000;
+$white: #ffffff;
+$main-txt: #302b2a;
+$nav-active: #4c1a0d;
+$btn-txt: #ececec;
+$main-btn: #c08b61;
+$footer-bg: #302b2a;
+
+// Common
+a {
+    text-decoration: none;
+    color: $main-txt;
+}
+
+button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: none;
+}
+
+.section-outer {
+    max-width: 1920px;
+}
+
+.section-inner {
+    max-width: 1170px;
+    margin: 0 auto;
+}
+
+.title {
+    @include font($ff-mont, $bold, 32px);
+    color: $main-txt;
+}
+
+// Header
+.header {
+    margin: 0;
+    padding: 0;
+}
+
+.banner {
+    background-color: $black;
+
+    &__text {
+        margin: 0;
+        padding: 13px 0;
+        @include font($ff-mont, $bold, 12px);
+        color: $white;
+        text-align: center;
+    }
+}
+
+.header__section-inner {
+    display: flex;
+}
+
+.logo {
+    display: flex;
+    flex-direction: row;
+    padding: 10px 0;
+    text-decoration: none;
+    color: $main-txt;
+
+    &__text {
+        margin: 0;
+        padding: 13px 0;
+        padding-left: 10px;
+    }
+
+    &__title {
+        margin: 0;
+        @include font($ff-mont, $thin, 12px);
+    }
+
+    &__title--bold {
+        @include font($ff-mont, $bold, 14px);
+    }
+}
+
+// Navigation
+.menu {
+    margin: 30px 60px 30px 225px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu__link {
+    @include font($ff-mont, $regular, 14px);
+    color: $main-txt;
+    cursor: pointer;
+    margin-right: 25px;
+    padding-bottom: 5px;
+    transition: $transition;
+    position: relative;
+
+    &:last-child {
+        margin: 0;
+    }
+
+    &:hover {
+        color: $main-txt;
+    }
+
+    &::after {
+        @include underline;
+    }
+
+    &:hover::after {
+        opacity: 1;
+    }
+
+    &--active::after {
+        color: $nav-active;
+        opacity: 1;
+    }
+}
+
+.phone-number {
+    margin: 30px 0;
+    @include font($ff-mont, $bold, 14px);
+}
+
+.location {
+    margin: 30px 30px 30px 30px;
+    display: flex;
+}
+
+.location__text {
+    @include font($ff-mont, $regular, 11px);
+    margin: 0;
+    padding-top: 3px;
+    padding-left: 5px;
+}
+
+.location__btn {
+    padding: 8px 0 5px 15px;
+    height: 3px;
+}
+
+.btn {
+    margin: 30px 15px 30px 0;
+    height: 14px;
+    padding: 0;
+
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+.main {
+    background-image: url(../img/first-screen.png);
+}
+
+.main__inner {
+}
+
+.main__title {
+    font-size: 42px;
+    padding-top: 180px;
+    margin: 0;
+}
+
+.main__description {
+    @include font($ff-os, $regular, 16px);
+    padding: 30px 0;
+    margin: 0;
+    color: #302b2a;
+}
+
+.main__btn {
+    margin: 20px 0;
+}
+
+.main-btn {
+    @include font($ff-mont, $bold, 16px);
+    border: 0;
+    padding: 20px 60px;
+    border-radius: 2px;
+    background-color: $main-btn;
+}
+
+// About
+
+// Footer
+.footer {
+    background-color: $footer-bg;
+}
+
+.footer__inner {
+    display: flex;
+}
+
+.footer__logo {
+    margin: 40px 0;
+    padding: 0;
+    color: $btn-txt;
+}
+
+.footer__menu {
+    margin: 60px 72px;
+    margin-left: 125px;
+}
+
+.footer__link {
+    color: $btn-txt;
+
+    &:hover {
+        color: $btn-txt;
+    }
+}
+
+.footer__phone-number {
+    margin: 60px 0;
+    color: $btn-txt;
+}
+
+.page-up {
+    margin: 60px auto;
+}
